@@ -71,7 +71,8 @@ export default class UserDialog extends Component{
                 </div>
                 <div className="row">
                     <lable>密码</lable>
-                    <input type="password" value={this.state.formData.password}
+                    <input type="password" className="password"
+                        value={this.state.formData.password}
                         onChange={this.changeFormData.bind(this,'password')} />
                 </div>
                 <div className="row actions">
@@ -88,7 +89,8 @@ export default class UserDialog extends Component{
                 </div>
                 <div className="row">
                     <lable>密码</lable>
-                    <input type="password" value={this.state.formData.password}
+                    <input type="password" className="password"
+                        value={this.state.formData.password}
                         onChange={this.changeFormData.bind(this,'password')} />
                 </div>
                 <div className="row actions">
