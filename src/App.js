@@ -16,10 +16,12 @@ class App extends Component {
   }
   render() {
 
-    let todos = this.state.todoList.map((item,index)=>{
+    let todos = this.state.todoList
+      .filter((item)=>!item.deleted)
+      .map((item,index)=>{
       return (
         <li key={index} >
-          <TodoItem todo={item} onToggle={this.toggle.bind(this)} />
+          <TodoItem todo={item} onToggle={this.toggle.bind(this)} onDelete={this.delete.bind(this)} />
         </li>
       )
     })
@@ -32,7 +34,7 @@ class App extends Component {
             onChange={this.changeTitle.bind(this)}
             onSubmit={this.addTodo.bind(this)} />
         </div>
-        <ol>
+        <ol className="todoList">
           {todos}
         </ol>
       </div>
@@ -59,6 +61,10 @@ class App extends Component {
       newTodo: '',
       todoList: this.state.todoList
     })
+  }
+  delete(event,todo){
+    todo.deleted = true
+    this.setState(this.state)
   }
 }
 
