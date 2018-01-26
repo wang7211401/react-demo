@@ -17,3 +17,8 @@
 .App > .todoList> li:nth-child(even){
     background: transparent;
 }
+.todoList{
+    max-height: 200px;
+    margin: 8px 0;
+    overflow: auto;
+}
