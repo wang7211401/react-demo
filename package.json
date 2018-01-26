@@ -2,7 +2,7 @@
   "name": "project-react-1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jirengu-inc.github.io/project-react-1/build/",
+  "homepage": "https://jirengu-inc.github.io/react-demo/build/",
   "dependencies": {
     "normalize.css": "^7.0.0",
     "react": "^16.2.0",
