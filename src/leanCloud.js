@@ -91,20 +91,31 @@ export function signUp(email, username, password, sucessFn, errorFn) {
     // 设置邮箱
     user.setEmail(email);
 
+    if(!username || !password || !email){
+        alert('请填写表单')
+        return
+    }
+
     user.signUp().then(function (loginedUser) {
         let user = getUserFromAVUser(loginedUser)
         sucessFn.call(null, user)
     }, function (error) {
+        console.dir(error)
         errorFn.call(null, error)
     })
     return undefined
 }
 
 export function signIn(username, password, sucessFn, errorFn) {
+    if(!username || !password){
+        alert('请填写表单')
+        return
+    }
     AV.User.logIn(username, password).then(function (loginedUser) {
         let user = getUserFromAVUser(loginedUser)
         sucessFn.call(null, user)
     }, function (error) {
+        console.dir(error)
         errorFn.call(null, error)
     });
     return undefined

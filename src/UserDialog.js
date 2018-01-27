@@ -20,13 +20,35 @@ export default class UserDialog extends Component {
         e.preventDefault()
         let {email, username, password} = this.state.formData
         let success = (user) => {
+            window.location.reload()
             console.log(user)
             this.props.onSignUp.call(null, user)
         }
         let error = (error) => {
             switch (error.code) {
+                case 201:
+                    alert('没有提供密码，或者密码为空')
+                    break
                 case 202:
-                    alert('用户名已被占用')
+                    alert('用户名已被占用，请重新输入')
+                    break
+                case 203:
+                    alert('邮箱地址已被占用,请重新输入')
+                    break
+                case 205:
+                    alert('找不到电子邮箱地址对应的用户')
+                    break
+                case 217:
+                    alert('无效的用户名，请重新输入')
+                    break
+                case 218:
+                    alert('无效的密码，请重新输入')
+                    break
+                case 219:
+                    alert('登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码')
+                    break
+                case 251:
+                    alert('无效的账户连接')
                     break
                 default:
                     alert(error)
@@ -39,13 +61,31 @@ export default class UserDialog extends Component {
         e.preventDefault()
         let {username, password} = this.state.formData
         let success = (user) => {
-            console.log(user)
+            window.location.reload()
             this.props.onSignIn.call(null, user)
         }
         let error = (error) => {
             switch (error.code) {
+                case 201:
+                    alert('没有提供密码，或者密码为空')
+                    break
                 case 210:
                     alert('用户名与密码不匹配')
+                    break
+                case 211:
+                    alert('用户名不存在或密码错误')
+                    break
+                case 217:
+                    alert('无效的用户名，请重新输入')
+                    break
+                case 218:
+                    alert('无效的密码，请重新输入')
+                    break
+                case 219:
+                    alert('登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码')
+                    break
+                case 251:
+                    alert('无效的账户连接')
                     break
                 default:
                     alert(error)
