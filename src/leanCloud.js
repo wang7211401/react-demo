@@ -10,7 +10,7 @@ AV.init({
 
 export default AV
 
-export function signUp(username,password,sucessFn,errorFn){
+export function signUp(email,username,password,sucessFn,errorFn){
     console.log(username)
     console.log(password)
     var user = new AV.User();
@@ -19,6 +19,8 @@ export function signUp(username,password,sucessFn,errorFn){
     // 设置密码
     user.setPassword(password);
     // 设置邮箱
+    user.setEmail(email);
+
     user.signUp().then(function (loginedUser) {
         let user = getUserFromAVUser(loginedUser)
         sucessFn.call(null,user)
@@ -47,6 +49,14 @@ export function getCurrentUser(){
 }
 export function signOut(){
     AV.User.logOut()
+    return undefined
+}
+export function sendPasswordResetEmail(email,sucessFn,errorFn){
+    AV.User.requestPasswordReset(email).then(function (success) {
+        sucessFn.call()
+    }, function (error) {
+        errorFn.call(null,error)
+    });
     return undefined
 }
 function getUserFromAVUser(AVUser){
